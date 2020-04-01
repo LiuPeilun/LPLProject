@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="applicable-device" content="mobile">
+    <meta name="keywords" content="蛋白质计算、每日蛋白质补充、蛋白质摄入量查询、高蛋白食品">
+    <meta name="description" content="蛋白质计算器能给你计算到你锻炼时每日的蛋白质摄入量，由Hi运动健身网制作出品，提供各种健身锻炼，减肥增肌的计算工具。">
+
+
+    <link href="static/css/global.css?246a7c8cc3ab47ec" rel="stylesheet">
+    <script src="static/js/libs/seajs.utils.js?15565355291123db"></script>
+    <script>
+        (function (d, c) {
+            var e = d.documentElement, b = "orientationchange" in window ? "orientationchange" : "resize";
+            var a = function () {
+                var f = e.clientWidth < 640 ? e.clientWidth : 640;
+                if (!f) {
+                    return
+                }
+                e.style.fontSize = 20 * (f / 320) + "px"
+            };
+            if (!d.addEventListener) {
+                return
+            }
+            c.addEventListener(b, a, false);
+            d.addEventListener("DOMContentLoaded", a, false);
+            a()
+        })(document, window);
+        seajs.use('lib');
+    </script>
+</head>
+<body>
+
+<div class="oh5-wrap ">
+    <div id="container" class="oh5-container ">
+
+        <div class="tools-wrap">
+            <div class="tools-hd"><h2 class="tools-title">蛋白质计算器</h2>
+                <p class="tools-intro">每公斤最少需要1克，1.5克是最标准的，青少年，运动员和孕妇等特殊需要的人应该达到2到3克，一般正常人需要大概70到150克之间。<br/>
+                    含蛋白质最多的食物是黄豆，每100克含36.3克；<br/> 含蛋白质最多的动物是鸡肉，每100克含23.3克；<br/>
+                    含蛋白质多的食物包括：牲畜的奶，牛奶、羊奶、马奶等;畜肉，牛、羊、猪、狗肉等;禽肉，鸡、鸭、鹅、鹌鹑、驼鸟等;蛋类，鸡蛋、鸭蛋、鹌鹑
+                    蛋等及鱼、虾、蟹等;还有大豆类，黄豆、大青豆和黑豆等，其中黄豆的营养价值最高，它是婴幼儿食品中优质的蛋白质来源;此外芝麻、瓜子、核桃、 杏仁、松子等干果类蛋白质的含量均较高。<br/>
+                    一个水煮蛋的蛋白质（不含蛋黄）4克 </p></div>
+            <div class="tools-content"><h3 class="tools-tip">请输入您的体重:</h3>
+                <form action="#" name="bfForm" id="bfForm">
+                    <div class="form-info"><label class="info-name" for="weight">体重:</label> <input class="input-text"
+                                                                                                    type="tel"
+                                                                                                    name="weight"> <em>KG(公斤)</em>
+                    </div>
+                    <a id="count-btn" class="count-btn" href="javascript:;" onclick="getDbz()">计算</a></form>
+            </div>
+            <div class="tools-result" id="Res" style="display:none">
+                <table cellpadding="0" cellspacing="0" class="table2 gray-table margin20">
+                    <tbody>
+                    <tr class="thead">
+                        <th class="label" width="50%"><b>生活或锻炼方式</b></th>
+                        <th class="label" width="50%"><b>每日最佳摄入的蛋白质范围（克）</b></th>
+                    </tr>
+                    <tr class="tcont">
+                        <td>正常人</td>
+                        <td id="tr0"></td>
+                    </tr>
+                    <tr class="tcont">
+                        <td>减肥减脂</td>
+                        <td id="tr1"></td>
+                    </tr>
+                    <tr class="tcont">
+                        <td>增肌</td>
+                        <td id="tr2"></td>
+                    </tr>
+                    <tr class="tcont">
+                        <td>健身房健美人士</td>
+                        <td id="tr3"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      <script>
+            seajs.use(['js/tools/saveLocal.js?b1cb01de2a12f52b'], function (saveLocal) {
+
+                function getDbz() {
+                    var weight = document.bfForm.weight.value;
+                    if (!weight) {
+                        alert("请输入您的体重");
+                        document.getElementById('Res').style.display = 'none';
+                        return;
+                    }
+
+                    //var goalFactor = new Array(0.9,1.44,0.81,0.99,0.31,0.9,0.4,0.63);
+                    var goalFactor = new Array(0.8, 1.16, 0.8, 1.16, 1.16, 1.8, 1.16, 2);
+
+                    for (var i = 0; i < 4; i++) {
+                        var rangeLow = goalFactor[2 * i] * weight;
+                        var rangeHigh = goalFactor[2 * i + 1] * weight;
+                        document.getElementById('tr' + i).innerHTML = rangeLow.toFixed(1) + '到' + rangeHigh.toFixed(1) + '之间';
+                    }
+
+                    saveLocal.formSave('#bfForm');
+                    document.getElementById('Res').style.display = 'block';
+                }
+
+                saveLocal.formInit('#bfForm');
+                document.getElementById('count-btn').onclick = function () {
+                    getDbz();
+                };
+            });
+        </script>
+   </div>
+</div>
+
+</body>
+</html>

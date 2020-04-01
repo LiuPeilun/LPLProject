@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>jsonUrl</key>
+		<string>https://api.vslimit.com/videos?category=%E7%A7%91%E6%8A%80&amp;date=1552380660000&amp;req=PAGE</string>
+	</dict>
+	<dict>
+		<key>jsonUrl</key>
+		<string>https://api.vslimit.com/videos?category=%E5%A8%B1%E4%B9%90&amp;req=REFRESH</string>
+	</dict>
+	<dict>
+		<key>jsonUrl</key>
+		<string>https://api.vslimit.com/videos?category=%E7%BE%8E%E9%A3%9F&amp;req=REFRESH</string>
+	</dict>
+	<dict>
+		<key>jsonUrl</key>
+		<string>https://api.vslimit.com/videos?category=%E4%B8%96%E7%95%8C&amp;req=REFRESH</string>
+	</dict>
+	<dict>
+		<key>jsonUrl</key>
+		<string>https://api.vslimit.com/videos?category=%E7%94%9F%E6%B4%BB&amp;req=REFRESH</string>
+	</dict>
+	<dict>
+		<key>jsonUrl</key>
+		<string>https://api.vslimit.com/videos?category=%E6%B1%BD%E8%BD%A6&amp;req=REFRESH</string>
+	</dict>
+</array>
+</plist>

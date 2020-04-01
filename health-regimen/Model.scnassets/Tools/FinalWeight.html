@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="applicable-device" content="mobile">
+    <title>最终体重计算</title>
+    <meta name="keywords" content="标准体重,身体质量指数(BMI),基础代谢率,健康体重范围">
+    <meta name="description" content="1分钟彻底了解自己的标准体重，健康体重范围，BMI指数，基础代谢率和燃脂运动中低强度运动心率，看看自己是否需要减肥了。">
+
+
+    <link href="static/css/global.css?246a7c8cc3ab47ec" rel="stylesheet">
+    <script src="static/js/libs/seajs.utils.js?15565355291123db"></script>
+    <script>
+        (function (d, c) {
+            var e = d.documentElement, b = "orientationchange" in window ? "orientationchange" : "resize";
+            var a = function () {
+                var f = e.clientWidth < 640 ? e.clientWidth : 640;
+                if (!f) {
+                    return
+                }
+                e.style.fontSize = 20 * (f / 320) + "px"
+            };
+            if (!d.addEventListener) {
+                return
+            }
+            c.addEventListener(b, a, false);
+            d.addEventListener("DOMContentLoaded", a, false);
+            a()
+        })(document, window);
+        seajs.use('lib');
+    </script>
+</head>
+<body>
+
+<div class="oh5-wrap ">
+    <div id="container" class="oh5-container ">
+        <!--<script id="config2" type="text/html">-->
+            <!--{"title" : "最终体重计算 - Hi运动瘦身工具 - Hi运动_Hi运动健身网"}-->
+        <!--</script>-->
+        <!--<div class="o-hiyd-header" style="position:absolute;">-->
+            <!--<div class="inner">-->
+                <!--&lt;!&ndash;<div class="left"><span class="btn return">返回</span></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="right"><a href="http://m.hiyd.com/user/login/" class="btn user">用户</a></div>&ndash;&gt;-->
+                <!--<h2 class="logo">Hi运动健身网</h2></div>-->
+        <!--</div>-->
+        <div class="tools-wrap">
+            <div class="tools-hd"><h2 class="tools-title">最终体重计算</h2>
+                <p class="tools-intro">
+                    下面的计算器将会计算出通过控制过饮食达到你所期望的体脂率时的体重，其会考虑控制饮食时肌肉流失的速率。此计算器已经假设在你控制饮食期间会进行力量训练（除了“下列的愚蠢情形”）。计算器是基于《你真正需要减少多少体重》这本书设计的。</p>
+            </div>
+            <div class="tools-content"><h3 class="tools-tip">请输入您的当前体重、当前体脂和目标体脂:</h3>
+                <form action="#" name="bfForm" id="bfForm">
+                    <div class="form-info form-info2"><label class="info-name" for="weight">当前体重:</label> <input
+                            class="input-text" type="tel" name="weight"> <em>KG(公斤)</em></div>
+                    <div class="form-info form-info2"><label class="info-name" for="fatRate">当前体脂:</label> <input
+                            class="input-text" type="tel" name="fatRate"> <em>%</em></div>
+                    <div class="form-info form-info2"><label class="info-name" for="bff">目标体脂:</label> <input
+                            class="input-text" type="tel" name="bff"> <em>%</em></div>
+                    <h3 class="tools-tip">下列哪种情形更适用于你：</h3>
+                    <div class="form-info ff-type"><label class="first pos-relat" for="Typical"> <input type="radio"
+                                                                                                        id="Typical"
+                                                                                                        name="situation"
+                                                                                                        checked="checked"
+                                                                                                        value="0.25">
+                        <div></div>
+                        <em>典型自然健美运动员：每三斤脂肪的减少伴随着一斤肌肉的流失（肌肉流失率25%）</em> </label><br> <label class="pos-relat"
+                                                                                            for="Optimistic"> <input
+                            type="radio" id="Optimistic" name="situation" value="0.15">
+                        <div></div>
+                        <em>乐观健康的：我只需要减少几斤，并且只会轻微控制饮食（肌肉流失率15%）</em> </label><br> <label class="pos-relat"
+                                                                                         for="Beginner"> <input
+                            type="radio" id="Beginner" name="situation" value="0.00">
+                        <div></div>
+                        <em>只需要减少几斤的初学者：我不会流失任何肌肉（肌肉流失率0%）</em> </label><br> <label class="pos-relat" for="Terrible">
+                        <input type="radio" id="Terrible" name="situation" value="0.36">
+                        <div></div>
+                        <em>不好：当我控制饮食时，我总是流失很多肌肉（肌肉流失率36%）</em> </label><br> <label class="pos-relat" for="Stupid">
+                        <input type="radio" id="Stupid" name="situation" value="0.50">
+                        <div></div>
+                        <em>愚蠢：我会严格控制饮食，但坚决不做任何形式的力量训练（肌肉流失率50%）</em> </label></div>
+                    <a id="count-btn" class="count-btn fw-btn" href="javascript:;">计算</a></form>
+            </div>
+            <div class="tools-result" id="Res" style="display:none">
+                <div class="weight input-item"><p class="result-analysis"><span>最终体重：</span> <em id="fbw"></em></p>
+                </div>
+            </div>
+        </div>
+        <!--<div class="section-appdl pos-bottom"><a href="http://www.hiyd.com/d"> <img class="share-logo"-->
+        <!--src="/static/img/playstore-icon.png?965e17a2829740f4"-->
+        <!--alt="hiyd-logo">-->
+        <!--<p class="share-title">Hi运动<br/>您的健身管理专家</p> <span class="share-go">下载</span> </a></div>-->
+        <script language="JavaScript">
+            seajs.use(['js/tools/saveLocal.js?b1cb01de2a12f52b'], function (saveLocal) {
+                // wxShare.init(8);
+
+                function calcmain() {
+                    var weight1 = document.bfForm.weight.value;
+                    var bfc1 = document.bfForm.fatRate.value;
+                    var bff1 = document.bfForm.bff.value;
+
+                    for (var i = 0; i < 5; i++) {
+                        var radioObj = document.bfForm.situation[i];
+                        if (radioObj.checked) {
+                            var factor = radioObj.value;
+                        }
+                    }
+
+                    if ((weight1 > 600.0) || (weight1 < 35)) {
+                        alert("体重必须在35 - 600之间");
+                        document.getElementById('Res').style.display = 'none';
+                        return false;
+                    }
+                    if ((bfc1 > 51.0) || (bfc1 < 4.5)) {
+                        alert("体脂率必须在4.5% - 51%之间");
+                        document.getElementById('Res').style.display = 'none';
+                        return false;
+                    }
+                    if ((bff1 > 51.0) || (bff1 < 4.5)) {
+                        alert("体脂率必须在4.5% - 51%之间");
+                        document.getElementById('Res').style.display = 'none';
+                        return false;
+                    }
+                    var cLBM = (1 - (bfc1 / 100)) * weight1;
+                    var fbw = (cLBM - factor * weight1) / ((1 - bff1 / 100) - factor);
+
+                    saveLocal.formSave('#bfForm');
+                    document.getElementById('fbw').innerHTML = Math.round(fbw) + "KG（公斤）";
+                    document.getElementById('Res').style.display = 'block';
+                }
+
+                saveLocal.formInit('#bfForm');
+                document.getElementById('count-btn').onclick = function () {
+                    calcmain();
+                };
+            });
+
+        </script>
+    </div>
+</div>
+
+
+</body>
+</html>

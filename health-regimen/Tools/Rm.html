@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="applicable-device" content="mobile">
+    <meta name="keywords" content="RM计算器、计算你的健身RM、RM公式、什么是RM">
+    <meta name="description" content="RM计算器能够算出你的锻炼合理RM，由Hi运动健身网制作出品，提供各种健身锻炼，减肥增肌的计算工具。
+">
+
+
+    <link href="static/css/global.css?246a7c8cc3ab47ec" rel="stylesheet">
+    <script src="static/js/libs/seajs.utils.js?15565355291123db"></script>
+    <script>
+        (function (d, c) {
+            var e = d.documentElement, b = "orientationchange" in window ? "orientationchange" : "resize";
+            var a = function () {
+                var f = e.clientWidth < 640 ? e.clientWidth : 640;
+                if (!f) {
+                    return
+                }
+                e.style.fontSize = 20 * (f / 320) + "px"
+            };
+            if (!d.addEventListener) {
+                return
+            }
+            c.addEventListener(b, a, false);
+            d.addEventListener("DOMContentLoaded", a, false);
+            a()
+        })(document, window);
+        seajs.use('lib');
+    </script>
+</head>
+<body>
+
+<div class="oh5-wrap ">
+    <div id="container" class="oh5-container ">
+        <div class="tools-wrap">
+            <div class="tools-hd"><h2 class="tools-title">RM计算器</h2>
+                <p class="tools-intro">RM"是英文"repetition
+                    maximum"的缩写，意思是"最大重复次数"。在健美锻炼活动中，"RM"被约定俗成地规定为能够重复试举一定次数的负荷重量，如"6～12RM"所表达的就是"一组最多能重复或连续试举6～12次的重量"。如用100公斤进行卧推练习，当竭尽全力最多只能连续推举5次时，那么这100公斤就是该动作5RM的重量。</p>
+            </div>
+            <div class="tools-content"><h3 class="tools-tip">请选择您的RM数和填写其对应的重量:</h3>
+                <form action="#" name="bfForm" id="bfForm">
+                    <div class="form-info form-info3"><select name="rm">
+                        <option value="0">1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                        <option value="3">4</option>
+                        <option value="4">5</option>
+                        <option value="5">6</option>
+                        <option value="6">8</option>
+                        <option value="7">9</option>
+                        <option value="8">10</option>
+                        <option value="9">12</option>
+                        <option value="10">15</option>
+                        <option value="11">20</option>
+                    </select>RM: <input class="input-text" type="tel" name="rmWeight"> <em>kg</em></div>
+                    <a id="count-btn" class="count-btn rm-btn" href="javascript:;">计算</a></form>
+            </div>
+            <div class="tools-result" id="Res" style="display:none">
+                <div class="weight input-item">
+                    <table class="result-table result-rm">
+                        <tr>
+                            <td class="rm-title">1RM</td>
+                            <td id="jg0" data-id="0"></td>
+                            <td class="rm-title">2RM</td>
+                            <td id="jg1" data-id="1"></td>
+                        </tr>
+                        <tr>
+                            <td class="rm-title">3RM</td>
+                            <td id="jg2" data-id="2"></td>
+                            <td class="rm-title">4RM</td>
+                            <td id="jg3" data-id="3"></td>
+                        </tr>
+                        <tr>
+                            <td class="rm-title">5RM</td>
+                            <td id="jg4" data-id="4"></td>
+                            <td class="rm-title">6RM</td>
+                            <td id="jg5" data-id="5"></td>
+                        </tr>
+                        <tr>
+                            <td class="rm-title">8RM</td>
+                            <td id="jg6" data-id="6"></td>
+                            <td class="rm-title">9RM</td>
+                            <td id="jg7" data-id="7"></td>
+                        </tr>
+                        <tr>
+                            <td class="rm-title">10RM</td>
+                            <td id="jg8" data-id="8"></td>
+                            <td class="rm-title">12RM</td>
+                            <td id="jg9" data-id="9"></td>
+                        </tr>
+                        <tr>
+                            <td class="rm-title">15RM</td>
+                            <td id="jg10" data-id="10"></td>
+                            <td class="rm-title">20RM</td>
+                            <td id="jg11" data-id="11"></td>
+                        </tr>
+                    </table>
+                    <p class="condition-tip">注意：每一个人的实际情况并不一致，此RM计算器适合大家参考，并以此为基础慢慢调节重量大小，直到自己能做的范围之内。</p></div>
+            </div>
+        </div>
+        <script>
+            seajs.use(['js/tools/saveLocal.js?b1cb01de2a12f52b'], function (saveLocal) {
+                var testArr = [100, 95, 93, 90, 87, 85, 80, 77, 75, 70, 67, 60];
+
+                function getResult() {
+                    var rm = document.bfForm.rm.value;
+                    var weight = document.bfForm.rmWeight.value;
+                    var result = {};
+                    var initWeight = weight / testArr[rm];
+
+                    if (!weight) {
+                        document.getElementById('Res').style.display = 'none';
+                        alert('请输入您选择的rm数对应的重量');
+                        return;
+                    }
+
+                    for (var i = 0; i < 12; i++) {
+                        result['jg' + i] = initWeight * testArr[i];
+                    }
+
+                    for (var i in result) {
+                        var num = result[i].toFixed(3);
+                        document.getElementById(i).innerHTML = (num.substring(0, num.lastIndexOf('.') + 2) + 'kg');
+                        document.getElementById('Res').style.display = "block";
+                    }
+                    saveLocal.formSave('#bfForm');
+                }
+
+                saveLocal.formInit('#bfForm');
+                document.getElementById('count-btn').onclick = function () {
+                    getResult();
+                };
+            });
+        </script>
+    </div>
+</div>
+
+</body>
+</html>

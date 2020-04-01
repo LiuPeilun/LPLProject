@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>URL</key>
+		<string>BMI.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>Bodyfat.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>Bodypred.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>Bodypredmax.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>Dbz.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>Drink.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>FatBurning.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>FinalWeight.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>HealthyWeight.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>Metabolism.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>OneMinute.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>ReLiang.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>Rm.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>StandardWeight.html</string>
+	</dict>
+	<dict>
+		<key>URL</key>
+		<string>XinLv.html</string>
+	</dict>
+</array>
+</plist>

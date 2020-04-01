@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="applicable-device" content="mobile">
+    <meta name="keywords" content="标准体重,身体质量指数(BMI),基础代谢率,健康体重范围">
+    <meta name="description" content="1分钟彻底了解自己的标准体重，健康体重范围，BMI指数，基础代谢率和燃脂运动中低强度运动心率，看看自己是否需要减肥了。">
+
+
+    <link href="static/css/global.css?246a7c8cc3ab47ec" rel="stylesheet">
+    <script src="static/js/libs/seajs.utils.js?15565355291123db"></script>
+    <script>
+        (function (d, c) {
+            var e = d.documentElement, b = "orientationchange" in window ? "orientationchange" : "resize";
+            var a = function () {
+                var f = e.clientWidth < 640 ? e.clientWidth : 640;
+                if (!f) {
+                    return
+                }
+                e.style.fontSize = 20 * (f / 320) + "px"
+            };
+            if (!d.addEventListener) {
+                return
+            }
+            c.addEventListener(b, a, false);
+            d.addEventListener("DOMContentLoaded", a, false);
+            a()
+        })(document, window);
+        seajs.use('lib');
+    </script>
+</head>
+<body>
+
+<div class="oh5-wrap ">
+    <div id="container" class="oh5-container ">
+        <!--<script id="config2" type="text/html">-->
+        <!--{"title" : "体脂含量计算 - Hi运动瘦身工具 - Hi运动_Hi运动健身网"}-->
+        <!--</script>-->
+        <!--<div class="o-hiyd-header" style="position:absolute;">-->
+        <!--<div class="inner">-->
+        <!--<div class="left"><span class="btn return">返回</span></div>-->
+        <!--<div class="right"><a href="http://m.hiyd.com/user/login/" class="btn user">用户</a></div>-->
+        <!--<h2 class="logo">Hi运动健身网</h2></div>-->
+        <!--</div>-->
+        <div class="tools-wrap">
+            <div class="tools-hd"><h2 class="tools-title">体脂率计算器</h2>
+                <p class="tools-intro">
+                    下列的计算器是根据你的体重，身高，年龄和简单的卷尺测量数据（比如：人体数据测量）来计算你的体脂率和瘦体重含量。皮肤褶皱测量往往会把肥胖人群和体脂极低人群（尤其是身体水分含量比较低）的体脂率测得偏低。然而下列的方程可适用于肥胖和体脂极低的人群，同时也适用于大量减重后皮肤松弛的人群和那些不使用药物的健美运动员。结果通常是准确的，上下可能浮动2-3个百分点。</p>
+            </div>
+            <div class="tools-content"><h3 class="tools-tip">请输入下面信息:</h3>
+                <form action="#" name="bfForm" id="bfForm">
+                    <div class="form-info"><label class="info-name" for="">性别:</label> <label class="radio-wrap first"
+                                                                                              for="male"> <input
+                            type="radio" id="male" name="gender" checked="checked" value="1">
+                        <div class="sex"></div>
+                        <em>男</em> </label> <label class="radio-wrap" for="female"> <input type="radio" id="female"
+                                                                                           name="gender" value="2">
+                        <div class="sex"></div>
+                        <em>女</em> </label></div>
+                    <div class="form-info"><label class="info-name" for="age">年龄:</label> <input class="input-text"
+                                                                                                 type="tel" name="age">
+                        <em>岁</em></div>
+                    <div class="form-info"><label class="info-name" for="height">身高:</label> <input class="input-text"
+                                                                                                    type="tel"
+                                                                                                    name="height"> <em>CM(厘米)</em>
+                    </div>
+                    <div class="form-info"><label class="info-name" for="weight">体重:</label> <input class="input-text"
+                                                                                                    type="tel"
+                                                                                                    name="weight"> <em>KG(公斤)</em>
+                    </div>
+                    <div class="form-info"><label class="info-name" for="waists">腰围:</label> <input class="input-text"
+                                                                                                    type="tel"
+                                                                                                    name="waists"> <em>CM(厘米)</em>
+                    </div>
+                    <div class="form-info"><label class="info-name" for="iliac">髂骨:</label> <input class="input-text"
+                                                                                                   type="tel"
+                                                                                                   name="iliac"> <em>CM(厘米)</em>
+                    </div>
+                    <div class="form-info"><label class="info-name" for="hips">臀围:</label> <input class="input-text"
+                                                                                                  type="tel"
+                                                                                                  name="hips"> <em>CM(厘米)</em>
+                    </div>
+                    <a id="count-btn" class="count-btn" href="javascript:;">计算</a></form>
+            </div>
+            <div class="tools-result" id="Res" style="display:none">
+                <div class="weight input-item"><p class="result-analysis"><span>体脂率：</span> <em id="fbw"></em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>去脂后的体重：</span> <em id="fbw2"></em></p></div>
+            </div>
+        </div>
+        <script>
+            seajs.use(['js/tools/saveLocal.js?b1cb01de2a12f52b'], function (saveLocal) {
+
+                function gaBf1() {
+
+                    var male = document.bfForm.gender[0];
+                    var female = document.bfForm.gender[1];
+                    var age = Number(document.bfForm.age.value);
+
+                    var initWeight = document.bfForm.weight.value;
+                    var initHeight = document.bfForm.height.value;
+                    var initAbd = document.bfForm.waists.value; //腰围
+                    var initIliac = document.bfForm.iliac.value;
+                    var initHips = document.bfForm.hips.value;
+
+                    var weight = Number(initWeight * 2.20462262);
+                    var height = Number(initHeight / 2.54);
+                    var abd = Number(initAbd / 2.54);
+                    var iliac = Number(initIliac / 2.54);
+                    var hips = Number(initHips / 2.54);
+
+                    var y = 495;
+                    var z = 450;
+
+                    if (male.checked) {
+                        sex = "male";
+
+                        var a = 0.57914807 * abd * 2.54;
+                        var b = 0.25189114 * hips * 2.54;
+                        var c = 0.21366088 * iliac * 2.54;
+                        var d = 0.35595404 * weight * .4535923704;
+                        var result = a + b + c - d - 47.371817;
+                        var perfat = result;
+                        var pleanmass = 1 - (perfat / 100);
+                    }
+
+                    if (female.checked) {
+                        sex = "female";
+                        var a = 0.002824 * abd * 2.54;
+                        var b = 0.0000122098 * abd * 2.54 * abd * 2.54;
+                        var c = 0.000733128 * hips * 2.54;
+                        var d = 0.000510477 * height * 2.54;
+                        var e = 0.000216161 * age;
+                        var result = 1.168297 - a + b - c + d - e;
+                        var perfat = (y / (result)) - z;
+                        var pleanmass = 1 - (perfat / 100);
+                    }
+
+
+                    var remain = perfat % 10;
+                    var bfint = Math.round(perfat);
+
+                    remain = perfat - bfint;
+
+                    var suff = Math.round(remain * 10);
+                    var finbf = bfint + suff / 10;
+                    var leanmass = pleanmass * weight;
+                    var lmint = Math.round(leanmass);
+                    var remain2 = leanmass % 10;
+
+                    remain2 = leanmass - lmint;
+
+                    var suff2 = Math.round(remain2 * 10);
+                    var finlm = lmint + suff2 / 10;
+
+                    if (true) {
+                        var remain = weight % 100;
+                        var wint = Math.round(weight);
+
+                        remain = weight - wint;
+
+                        var suff = Math.round(remain * 100);
+
+                        weight = wint + suff / 100;
+                    }
+
+                    if (true) {
+                        var remain = height % 100;
+                        var hint = Math.round(height);
+
+                        remain = height - hint;
+
+                        var suff = Math.round(remain * 100);
+
+                        height = hint + suff / 100;
+
+                    }
+
+                    if (true) {
+                        var remain = abd % 100;
+                        var aint = Math.round(abd);
+
+                        remain = abd - aint;
+
+                        var suff = Math.round(remain * 100);
+
+                        abd = aint + suff / 100;
+
+                    }
+
+                    if (true) {
+                        var remain = iliac % 100;
+                        var ilint = Math.round(iliac);
+
+                        remain = iliac - ilint;
+
+                        var suff = Math.round(remain * 100);
+
+                        iliac = ilint + suff / 100;
+
+                    }
+
+                    if (true) {
+                        var remain = hips % 100;
+                        var hipint = Math.round(hips);
+
+                        remain = hips - hipint;
+
+                        var suff = Math.round(remain * 100);
+
+                        hips = hipint + suff / 100;
+
+                    }
+
+
+                    //validation
+                    if ((age > 100) || (age < 15)) {
+                        alert("年龄必须在15-100之间");
+                        return false;
+                    }
+
+                    if ((initWeight > 600) || (initWeight < 35)) {
+                        alert("体重必须在35-600之间");
+                        return false;
+                    }
+
+                    if ((initHeight > 240) || (initHeight < 36)) {
+                        alert("身高必须在36-240之间");
+                        return false;
+                    }
+
+                    if ((initAbd > 200) || (initAbd < 12)) {
+                        alert("腰围必须在12-200之间");
+                        return false;
+                    }
+
+                    if ((initIliac > 400) || (initIliac < 12)) {
+                        alert("髂骨必须在12-400之间");
+                        return false;
+                    }
+
+                    if ((initHips > 400) || (initHips < 12)) {
+                        alert("臀围必须在12-400之间");
+                        return false;
+                    }
+
+                    saveLocal.formSave('#bfForm');
+                    document.getElementById('fbw').innerHTML = finbf.toFixed(1) + "%";
+                    document.getElementById('fbw2').innerHTML = (finlm / 2.20462262).toFixed(1) + "公斤";
+                    document.getElementById('Res').style.display = 'block';
+                }
+
+                saveLocal.formInit('#bfForm');
+                document.getElementById('count-btn').onclick = function () {
+                    gaBf1();
+                };
+            });
+
+        </script>
+    </div>
+</div>
+
+</body>
+</html>

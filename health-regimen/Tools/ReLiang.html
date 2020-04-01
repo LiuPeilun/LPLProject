@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="applicable-device" content="mobile">
+    <meta name="keywords" content="热量计算器、运动锻炼热量消耗计算、跑步热量消耗、跳操热量消耗、骑车热量消耗、散步热量消耗、游泳热量消耗">
+    <meta name="description" content="热量计算器能够算出你的运动热量消耗数值，由Hi运动健身网制作出品，提供各种健身锻炼，减肥增肌的计算工具。">
+
+
+    <link href="static/css/global.css?246a7c8cc3ab47ec" rel="stylesheet">
+    <script src="static/js/libs/seajs.utils.js?15565355291123db"></script>
+    <script>
+        (function (d, c) {
+            var e = d.documentElement, b = "orientationchange" in window ? "orientationchange" : "resize";
+            var a = function () {
+                var f = e.clientWidth < 640 ? e.clientWidth : 640;
+                if (!f) {
+                    return
+                }
+                e.style.fontSize = 20 * (f / 320) + "px"
+            };
+            if (!d.addEventListener) {
+                return
+            }
+            c.addEventListener(b, a, false);
+            d.addEventListener("DOMContentLoaded", a, false);
+            a()
+        })(document, window);
+        seajs.use('lib');
+    </script>
+</head>
+<body>
+
+<div class="oh5-wrap ">
+    <div id="container" class="oh5-container ">
+        <div class="tools-wrap">
+            <div class="tools-hd"><h2 class="tools-title">热量计算器</h2>
+                <p class="tools-intro">热量计算，卡路里计算器、热量消耗计算</p></div>
+            <div class="tools-content"><h3 class="tools-tip">请输入您的重量:</h3>
+                <form action="#" name="bfForm" id="bfForm">
+                    <div class="form-info"><label class="info-name" for="weight">体重:</label> <input class="input-text"
+                                                                                                    type="tel"
+                                                                                                    name="weight"> <em>KG(公斤)</em>
+                    </div>
+                    <h3 class="tools-tip">请输入您的运动持续时间:</h3>
+                    <div class="form-info"><label class="info-name" for="duration">时间:</label> <input class="input-text"
+                                                                                                      type="tel"
+                                                                                                      name="duration">
+                        <em>分钟</em></div>
+                    <h3 class="tools-tip">请选择您的运动类型:</h3>
+                    <div class="form-info ff-type reliang-label"><label class="pos-relat"> <input name="type"
+                                                                                                  type="radio"
+                                                                                                  value="575.5"
+                                                                                                  checked="checked">
+                        <div></div>
+                        <em>健美操</em> </label> <label class="pos-relat"> <input name="type" type="radio" value="958.8">
+                        <div></div>
+                        <em>跳绳</em> </label> <label class="pos-relat"> <input name="type" type="radio" value="766.6">
+                        <div></div>
+                        <em>篮球</em> </label> <label class="pos-relat"> <input name="type" type="radio" value="958.80">
+                        <div></div>
+                        <em>足球</em> </label><br> <label class="pos-relat"> <input name="type" type="radio"
+                                                                                  value="671.1">
+                        <div></div>
+                        <em>跑步</em> </label> <label class="pos-relat"> <input name="type" type="radio" value="478.8">
+                        <div></div>
+                        <em>骑车</em> </label> <label class="pos-relat"> <input name="type" type="radio" value="766.60">
+                        <div></div>
+                        <em>游泳</em> </label> <label class="pos-relat"> <input name="type" type="radio" value="335.5">
+                        <div></div>
+                        <em>散步</em> </label></div>
+                    <a id="count-btn" class="count-btn" href="javascript:;" onclick="getReLiang()">计算</a></form>
+            </div>
+            <div class="tools-result" id="Res" style="display:none"><p class="result-analysis">消耗热量：<em
+                    id="calories"></em>卡路里</p></div>
+        </div>
+         <script>
+            seajs.use(['js/tools/saveLocal.js?b1cb01de2a12f52b'], function (saveLocal) {
+
+                function getReLiang() {
+                    var weight = document.bfForm.weight.value * 2;
+                    var duration = document.bfForm.duration.value;
+                    for (var i = 0; i < 8; i++) {
+                        var radioObj = document.bfForm.type[i];
+                        if (radioObj.checked) {
+                            var type = radioObj.value;
+                        }
+                    }
+
+                    if (!weight) {
+                        alert("请输入您的体重");
+                        document.getElementById('Res').style.display = 'none';
+                        return;
+                    }
+                    if (!duration) {
+                        alert("请输入您的运动持续时间");
+                        document.getElementById('Res').style.display = 'none';
+                        return;
+                    }
+
+                    var calories = 0;
+                    var minutes = 60;
+                    var inertia = 190;
+
+                    var realTime = eval(duration / minutes);
+                    var realWeight = eval(weight / inertia);
+                    calories = Math.round(eval((realTime * realWeight) * type));
+
+                    saveLocal.formSave('#bfForm');
+                    document.getElementById('calories').innerHTML = calories;
+                    document.getElementById('Res').style.display = 'block';
+                }
+
+                saveLocal.formInit('#bfForm');
+                document.getElementById('count-btn').onclick = function () {
+                    getReLiang();
+                };
+            });
+        </script>
+    </div>
+</div>
+
+</body>
+</html>

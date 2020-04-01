@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="applicable-device" content="mobile">
+    <!--<title>一分钟了解自己</title>-->
+    <meta name="keywords" content="标准体重,身体质量指数(BMI),基础代谢率,健康体重范围">
+    <meta name="description" content="1分钟彻底了解自己的标准体重，健康体重范围，BMI指数，基础代谢率和燃脂运动中低强度运动心率，看看自己是否需要减肥了。">
+
+
+    <!--<link rel="canonical" href="https://www.hiyd.com/tools/OneMinute/">-->
+    <link href="static/css/global.css?246a7c8cc3ab47ec" rel="stylesheet">
+    <script src="static/js/libs/seajs.utils.js?15565355291123db"></script>
+    <script>
+        (function (d, c) {
+            var e = d.documentElement, b = "orientationchange" in window ? "orientationchange" : "resize";
+            var a = function () {
+                var f = e.clientWidth < 640 ? e.clientWidth : 640;
+                if (!f) {
+                    return
+                }
+                e.style.fontSize = 20 * (f / 320) + "px"
+            };
+            if (!d.addEventListener) {
+                return
+            }
+            c.addEventListener(b, a, false);
+            d.addEventListener("DOMContentLoaded", a, false);
+            a()
+        })(document, window);
+        seajs.use('lib');
+    </script>
+</head>
+<body>
+
+<div class="oh5-wrap ">
+    <div id="container" class="oh5-container ">
+        <!--<script id="config2" type="text/html">-->
+        <!--{"title" : "一分钟了解自己_Hi运动健身网"}-->
+        <!--</script>-->
+        <!--<div class="o-hiyd-header" style="position:absolute;">-->
+            <!--<div class="inner">-->
+                <!--&lt;!&ndash;<div class="left"><span class="btn return">返回</span></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="right"><a href="http://m.hiyd.com/user/login/" class="btn user">用户</a></div>&ndash;&gt;-->
+                <!--<h2 class="logo">Hi运动健身网</h2></div>-->
+        <!--</div>-->
+        <div class="tools-wrap">
+            <div class="tools-hd"><h2 class="tools-title">一分钟了解自己</h2>
+                <p class="tools-intro">
+                    1分钟彻底了解自己的标准体重、健康体重范围、BMI指数（即身体质量指数）、基础代谢率和燃脂运动中低强度运动心率，看看自己是否需要减肥了。身体质量指数(BMI)：评估体重与身高比例的常用工具，适用范围：18至65岁的人士。儿童、发育中的青少年、孕妇、乳母、老人及身型健硕的运动员除外。</p>
+            </div>
+            <div class="tools-content"><h3 class="tools-tip">请输入您的性别、年龄、身高和体重:</h3>
+                <form action="#" id="toolsForm">
+                    <div class="form-info"><label class="info-name" for="">性别:</label> <label class="radio-wrap first"
+                                                                                              for="male"> <input
+                            type="radio" id="male" name="gender" checked="checked" value="1">
+                        <div class="sex"></div>
+                        <em>男</em> </label> <label class="radio-wrap" for="female"> <input type="radio" id="female"
+                                                                                           name="gender" value="2">
+                        <div class="sex"></div>
+                        <em>女</em> </label></div>
+                    <div class="form-info"><label class="info-name" for="height">年龄:</label> <input class="input-text"
+                                                                                                    type="tel"
+                                                                                                    name="age">
+                        <em>岁</em></div>
+                    <div class="form-info"><label class="info-name" for="height">身高:</label> <input class="input-text"
+                                                                                                    type="tel"
+                                                                                                    name="height"> <em>CM(厘米)</em>
+                    </div>
+                    <div class="form-info"><label class="info-name" for="height">体重:</label> <input class="input-text"
+                                                                                                    type="tel"
+                                                                                                    name="weight"> <em>KG(公斤)</em>
+                    </div>
+                    <a class="count-btn" href="javascript:;" id="getBMI">计算</a></form>
+            </div>
+            <div class="tools-result"></div>
+        </div>
+        <!--<div class="section-appdl pos-bottom"><a href="http://www.hiyd.com/d"> <img class="share-logo"-->
+                                                                                    <!--src="/static/img/playstore-icon.png?965e17a2829740f4"-->
+                                                                                    <!--alt="hiyd-logo">-->
+            <!--<p class="share-title">Hi运动<br/>您的健身管理专家</p> <span class="share-go">下载</span> </a></div>-->
+        <script type="text/javascript">
+            seajs.use(['js/tools/oneMinute.js?692129b8e48af561'],function(e) {
+                e.init();
+            });
+        </script>
+    </div>
+</div>
+
+</body>
+</html>

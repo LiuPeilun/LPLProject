@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="applicable-device" content="mobile">
+    <meta name="keywords" content="标准体重,身体质量指数(BMI),基础代谢率,健康体重范围">
+    <meta name="description" content="1分钟彻底了解自己的标准体重，健康体重范围，BMI指数，基础代谢率和燃脂运动中低强度运动心率，看看自己是否需要减肥了。">
+
+
+    <link href="static/css/global.css?246a7c8cc3ab47ec" rel="stylesheet">
+    <script src="static/js/libs/seajs.utils.js?15565355291123db"></script>
+    <script>
+        (function (d, c) {
+            var e = d.documentElement, b = "orientationchange" in window ? "orientationchange" : "resize";
+            var a = function () {
+                var f = e.clientWidth < 640 ? e.clientWidth : 640;
+                if (!f) {
+                    return
+                }
+                e.style.fontSize = 20 * (f / 320) + "px"
+            };
+            if (!d.addEventListener) {
+                return
+            }
+            c.addEventListener(b, a, false);
+            d.addEventListener("DOMContentLoaded", a, false);
+            a()
+        })(document, window);
+        seajs.use('lib');
+    </script>
+</head>
+<body>
+
+<div class="oh5-wrap ">
+    <div id="container" class="oh5-container ">
+        <div class="tools-wrap">
+            <div class="tools-hd"><h2 class="tools-title">肌肉潜力计算器</h2>
+                <p class="tools-intro">
+                    下列的计算器可计算在不使用药物的情况下，你的身体最大肌肉量和肌肉围度（大概8%-10%的体脂率）。方程是基于我六年对于过去和现在非用药冠军的研究和数据分析所得出的。本质上，这个计算器是将非用药冠军的体型去拟合你的体型。这个计算器所使用的方程可在《最大肌肉量和肌肉潜力》这本书中里找到。</p>
+            </div>
+            <div class="tools-content"><h3 class="tools-tip">请输入您的性别、手腕、脚踝和体脂:</h3>
+                <form action="#" name="bfForm" id="bfForm">
+                    <div class="form-info"><label class="info-name" for="height">身高:</label> <input class="input-text"
+                                                                                                    type="tel"
+                                                                                                    name="height"> <em>CM(厘米)</em>
+                    </div>
+                    <div class="form-info"><label class="info-name" for="wrist">手腕:</label> <input class="input-text"
+                                                                                                   type="tel"
+                                                                                                   name="wrist"> <em>CM(厘米)</em>
+                    </div>
+                    <div class="form-info"><label class="info-name" for="ankle">脚踝:</label> <input class="input-text"
+                                                                                                   type="tel"
+                                                                                                   name="ankle"> <em>CM(厘米)</em>
+                    </div>
+                    <div class="form-info"><label class="info-name" for="fatRate">体脂:</label> <input class="input-text"
+                                                                                                     type="tel"
+                                                                                                     name="fatRate">
+                        <em>%</em></div>
+                    <a id="count-btn" class="count-btn" href="javascript:;"">计算</a> </form>
+            </div>
+            <div class="tools-result" id="Res" style="display:none">
+                <div class="weight input-item"><p class="result-analysis">• 你的最大体重估计：<em id="max1"></em>kg</p>
+                    <p class="result-analysis">• 你的最大体型体重估计：<em id="max2"></em>kg</p>
+                    <p class="result-analysis">• 胸部： <em id="Chest"></em>cm</p>
+                    <p class="result-analysis">• 前臂： <em id="Forearms"></em>cm</p>
+                    <p class="result-analysis">• 大腿： <em id="Thighs"></em>cm</p>
+                    <p class="result-analysis">• 肱二头肌： <em id="Biceps"></em>cm</p>
+                    <p class="result-analysis">• 颈部： <em id="Neck"></em>cm</p>
+                    <p class="result-analysis">• 小腿： <em id="Calves"></em>cm</p></div>
+            </div>
+        </div>
+       <script language="JavaScript">
+            seajs.use(['js/tools/saveLocal.js?b1cb01de2a12f52b'], function (saveLocal) {
+
+                function gaBf1() {
+
+                    var height = Number(document.bfForm.height.value);
+                    var wrist = Number(document.bfForm.wrist.value);
+                    var ankle = Number(document.bfForm.ankle.value);
+                    var bodyfat = Number(document.bfForm.fatRate.value);
+
+                    var lbp = 1 - (bodyfat / 100);
+
+                    var c_height = height / 2.54;
+                    var c_wrist = wrist / 2.54;
+                    var c_ankle = ankle / 2.54;
+
+                    var weight = (Math.pow(c_height, 1.5) * (Math.sqrt(c_wrist) / 22.6670 + Math.sqrt(c_ankle) / 17.0104) * (bodyfat / 224 + 1)) / lbp;
+                    var bulkweight = weight * 1.04;
+
+                    var chest = 1.6817 * c_wrist + 1.3759 * c_ankle + 0.3314 * c_height;
+                    var biceps = 1.2033 * c_wrist + 0.1236 * c_height;
+                    var forearms = 0.9626 * c_wrist + 0.0989 * c_height;
+                    var neck = 1.1424 * c_wrist + 0.1236 * c_height;
+                    var thighs = 1.3868 * c_ankle + 0.1805 * c_height;
+                    var calves = 0.9298 * c_ankle + 0.1210 * c_height;
+
+                    var remain = weight % 10;
+                    var rint = Math.round(weight);
+                    remain = weight - rint;
+                    var suff = Math.round(remain * 10);
+                    weight = rint + suff / 10;
+
+                    var remain = bulkweight % 10;
+                    var brint = Math.round(bulkweight);
+                    remain = bulkweight - brint;
+                    var suff = Math.round(remain * 10);
+                    bulkweight = brint + suff / 10;
+
+                    var remain = chest % 10;
+                    var cint = Math.round(chest);
+                    remain = chest - cint;
+                    var suff = Math.round(remain * 10);
+                    chest = cint + suff / 10;
+
+                    var remain = biceps % 10;
+                    var bint = Math.round(biceps);
+                    remain = biceps - bint;
+                    var suff = Math.round(remain * 10);
+                    biceps = bint + suff / 10;
+
+                    var remain = forearms % 10;
+                    var fint = Math.round(forearms);
+                    remain = forearms - fint;
+                    var suff = Math.round(remain * 10);
+                    forearms = fint + suff / 10;
+
+                    var remain = neck % 10;
+                    var nint = Math.round(neck);
+                    remain = neck - nint;
+                    var suff = Math.round(remain * 10);
+                    neck = nint + suff / 10;
+
+                    var remain = thighs % 10;
+                    var tint = Math.round(thighs);
+                    remain = thighs - tint;
+                    var suff = Math.round(remain * 10);
+                    thighs = tint + suff / 10;
+
+                    var remain = calves % 10;
+                    var caint = Math.round(calves);
+                    remain = calves - caint;
+                    var suff = Math.round(remain * 10);
+                    calves = caint + suff / 10;
+
+                    //validation
+                    if ((height > 240) || (height < 36)) {
+                        alert("身高必须在36-240之间");
+                        return false;
+                    }
+                    if ((ankle > 31.2) || (ankle < 17.2)) {
+                        alert("脚踝最细处必须在17.2-31.2之间");
+                        return false;
+                    }
+                    if ((wrist > 25.4) || (wrist < 13)) {
+                        alert("手腕周长必须在13-25.4之间");
+                        return false;
+                    }
+                    if ((bodyfat > 51.0) || (bodyfat < 4.5)) {
+                        alert("体脂率必须在4.5% - 51%之间");
+                        return false;
+                    }
+
+                    saveLocal.formSave('#bfForm');
+                    document.getElementById('max1').innerHTML = (weight * 0.4535924).toFixed(1);
+                    document.getElementById('max2').innerHTML = (bulkweight * 0.4535924).toFixed(1);
+                    document.getElementById('Chest').innerHTML = (chest * 2.54).toFixed(1);
+                    document.getElementById('Forearms').innerHTML = (forearms * 2.54).toFixed(1);
+                    document.getElementById('Thighs').innerHTML = (thighs * 2.54).toFixed(1);
+                    document.getElementById('Biceps').innerHTML = (biceps * 2.54).toFixed(1);
+                    document.getElementById('Neck').innerHTML = (neck * 2.54).toFixed(1);
+                    document.getElementById('Calves').innerHTML = (calves * 2.54).toFixed(1);
+                    document.getElementById('Res').style.display = "block";
+                }
+
+                saveLocal.formInit('#bfForm');
+                document.getElementById('count-btn').onclick = function () {
+                    gaBf1();
+                };
+            });
+
+        </script>
+  </div>
+</div>
+
+</body>
+</html>

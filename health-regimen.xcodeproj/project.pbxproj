@@ -39,6 +39,7 @@
 		F4236C6023672C86008D72D7 /* Self.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4236C5F23672C86008D72D7 /* Self.plist */; };
 		F4236C63236739B9008D72D7 /* SelfItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4236C62236739B9008D72D7 /* SelfItem.m */; };
 		F4236C6623673ADC008D72D7 /* SelfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4236C6523673ADC008D72D7 /* SelfTableViewCell.m */; };
+		F4375B1F243EC70C006EFE7B /* Tools in Resources */ = {isa = PBXBuildFile; fileRef = F4375B1E243EC70C006EFE7B /* Tools */; };
 		F4B7E8DE236AD4A600AC9054 /* Html.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4B7E8DD236AD4A600AC9054 /* Html.plist */; };
 		F4B7E93C236AF04700AC9054 /* HtmlItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7E93B236AF04700AC9054 /* HtmlItem.m */; };
 		F4C2E101237F8C9300D302E9 /* ToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2E100237F8C9300D302E9 /* ToolsViewController.m */; };
@@ -221,47 +222,7 @@
 		F4236C62236739B9008D72D7 /* SelfItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfItem.m; sourceTree = "<group>"; };
 		F4236C6423673ADC008D72D7 /* SelfTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfTableViewCell.h; sourceTree = "<group>"; };
 		F4236C6523673ADC008D72D7 /* SelfTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfTableViewCell.m; sourceTree = "<group>"; };
-		F46DD11324342EF700B1CE94 /* FinalWeight.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = FinalWeight.html; sourceTree = "<group>"; };
-		F46DD11424342EF700B1CE94 /* Drink.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Drink.html; sourceTree = "<group>"; };
-		F46DD11524342EF700B1CE94 /* FatBurning.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = FatBurning.html; sourceTree = "<group>"; };
-		F46DD11624342EF700B1CE94 /* StandardWeight.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = StandardWeight.html; sourceTree = "<group>"; };
-		F46DD11724342EF700B1CE94 /* XinLv.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = XinLv.html; sourceTree = "<group>"; };
-		F46DD11824342EF700B1CE94 /* BMI.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = BMI.html; sourceTree = "<group>"; };
-		F46DD11924342EF700B1CE94 /* HealthyWeight.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = HealthyWeight.html; sourceTree = "<group>"; };
-		F46DD11A24342EF700B1CE94 /* ReLiang.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ReLiang.html; sourceTree = "<group>"; };
-		F46DD11B24342EF700B1CE94 /* OneMinute.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = OneMinute.html; sourceTree = "<group>"; };
-		F46DD11C24342EF700B1CE94 /* Bodyfat.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Bodyfat.html; sourceTree = "<group>"; };
-		F46DD11D24342EF700B1CE94 /* Bodypred.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Bodypred.html; sourceTree = "<group>"; };
-		F46DD11E24342EF700B1CE94 /* Metabolism.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Metabolism.html; sourceTree = "<group>"; };
-		F46DD11F24342EF700B1CE94 /* Rm.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Rm.html; sourceTree = "<group>"; };
-		F46DD12224342EF700B1CE94 /* global.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = global.css; sourceTree = "<group>"; };
-		F46DD12524342EF700B1CE94 /* saveLocal.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = saveLocal.js; sourceTree = "<group>"; };
-		F46DD12624342EF700B1CE94 /* foodTool.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = foodTool.js; sourceTree = "<group>"; };
-		F46DD12724342EF700B1CE94 /* oneMinute.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = oneMinute.js; sourceTree = "<group>"; };
-		F46DD12924342EF700B1CE94 /* ext-sdk.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "ext-sdk.js"; sourceTree = "<group>"; };
-		F46DD12A24342EF700B1CE94 /* underscore.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = underscore.js; sourceTree = "<group>"; };
-		F46DD12B24342EF700B1CE94 /* clndr.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = clndr.js; sourceTree = "<group>"; };
-		F46DD12C24342EF700B1CE94 /* jq2.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jq2.js; sourceTree = "<group>"; };
-		F46DD12D24342EF700B1CE94 /* react.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = react.js; sourceTree = "<group>"; };
-		F46DD12E24342EF700B1CE94 /* task.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = task.js; sourceTree = "<group>"; };
-		F46DD12F24342EF700B1CE94 /* swipe.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = swipe.js; sourceTree = "<group>"; };
-		F46DD13024342EF700B1CE94 /* store.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = store.js; sourceTree = "<group>"; };
-		F46DD13124342EF700B1CE94 /* seajs.utils.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = seajs.utils.js; sourceTree = "<group>"; };
-		F46DD13224342EF700B1CE94 /* dialog.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = dialog.js; sourceTree = "<group>"; };
-		F46DD13324342EF700B1CE94 /* library.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = library.js; sourceTree = "<group>"; };
-		F46DD13424342EF700B1CE94 /* loginApi.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = loginApi.js; sourceTree = "<group>"; };
-		F46DD13624342EF700B1CE94 /* jquery.treeTable.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.treeTable.js; sourceTree = "<group>"; };
-		F46DD13724342EF700B1CE94 /* nprogress.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = nprogress.js; sourceTree = "<group>"; };
-		F46DD13824342EF700B1CE94 /* md5.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = md5.js; sourceTree = "<group>"; };
-		F46DD13924342EF700B1CE94 /* lazyr.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = lazyr.js; sourceTree = "<group>"; };
-		F46DD13A24342EF700B1CE94 /* jweixin-1.0.0.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jweixin-1.0.0.js"; sourceTree = "<group>"; };
-		F46DD13B24342EF700B1CE94 /* form.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = form.js; sourceTree = "<group>"; };
-		F46DD13C24342EF700B1CE94 /* cookie.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = cookie.js; sourceTree = "<group>"; };
-		F46DD13D24342EF700B1CE94 /* idangerous.swiper.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = idangerous.swiper.js; sourceTree = "<group>"; };
-		F46DD13E24342EF700B1CE94 /* template.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = template.js; sourceTree = "<group>"; };
-		F46DD14124342EF700B1CE94 /* global_0.5_z.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = global_0.5_z.png; sourceTree = "<group>"; };
-		F46DD14224342EF700B1CE94 /* Bodypredmax.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Bodypredmax.html; sourceTree = "<group>"; };
-		F46DD14324342EF700B1CE94 /* Dbz.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Dbz.html; sourceTree = "<group>"; };
+		F4375B1E243EC70C006EFE7B /* Tools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Tools; path = "../../../大创/Tools"; sourceTree = "<group>"; };
 		F4B7E8DD236AD4A600AC9054 /* Html.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Html.plist; sourceTree = "<group>"; };
 		F4B7E93A236AF04700AC9054 /* HtmlItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HtmlItem.h; sourceTree = "<group>"; };
 		F4B7E93B236AF04700AC9054 /* HtmlItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HtmlItem.m; sourceTree = "<group>"; };
@@ -550,10 +511,10 @@
 				F4187546235DDD2A00B6DB40 /* 知识 */,
 				F418754A235DDD8200B6DB40 /* 视频 */,
 				F4187527235DCEB200B6DB40 /* ViewController.h */,
-				F46DD11224342EF700B1CE94 /* Tools */,
 				7599FA3823890FEC00FD7C7C /* Model.scnassets */,
 				F4C48EF32380D6DD007E7434 /* lib */,
 				F4187528235DCEB200B6DB40 /* ViewController.m */,
+				F4375B1E243EC70C006EFE7B /* Tools */,
 				F418752A235DCEB200B6DB40 /* Main.storyboard */,
 				F418752D235DCEB400B6DB40 /* Assets.xcassets */,
 				F418752F235DCEB400B6DB40 /* LaunchScreen.storyboard */,
@@ -783,119 +744,6 @@
 				F4D0F250237AA1A200BC8222 /* LPLTabBarView.m */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		F46DD11224342EF700B1CE94 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				F46DD11324342EF700B1CE94 /* FinalWeight.html */,
-				F46DD11424342EF700B1CE94 /* Drink.html */,
-				F46DD11524342EF700B1CE94 /* FatBurning.html */,
-				F46DD11624342EF700B1CE94 /* StandardWeight.html */,
-				F46DD11724342EF700B1CE94 /* XinLv.html */,
-				F46DD11824342EF700B1CE94 /* BMI.html */,
-				F46DD11924342EF700B1CE94 /* HealthyWeight.html */,
-				F46DD11A24342EF700B1CE94 /* ReLiang.html */,
-				F46DD11B24342EF700B1CE94 /* OneMinute.html */,
-				F46DD11C24342EF700B1CE94 /* Bodyfat.html */,
-				F46DD11D24342EF700B1CE94 /* Bodypred.html */,
-				F46DD11E24342EF700B1CE94 /* Metabolism.html */,
-				F46DD11F24342EF700B1CE94 /* Rm.html */,
-				F46DD12024342EF700B1CE94 /* static */,
-				F46DD14224342EF700B1CE94 /* Bodypredmax.html */,
-				F46DD14324342EF700B1CE94 /* Dbz.html */,
-			);
-			name = Tools;
-			path = Model.scnassets/Tools;
-			sourceTree = "<group>";
-		};
-		F46DD12024342EF700B1CE94 /* static */ = {
-			isa = PBXGroup;
-			children = (
-				F46DD12124342EF700B1CE94 /* css */,
-				F46DD12324342EF700B1CE94 /* js */,
-				F46DD13F24342EF700B1CE94 /* img */,
-			);
-			path = static;
-			sourceTree = "<group>";
-		};
-		F46DD12124342EF700B1CE94 /* css */ = {
-			isa = PBXGroup;
-			children = (
-				F46DD12224342EF700B1CE94 /* global.css */,
-			);
-			path = css;
-			sourceTree = "<group>";
-		};
-		F46DD12324342EF700B1CE94 /* js */ = {
-			isa = PBXGroup;
-			children = (
-				F46DD12424342EF700B1CE94 /* tools */,
-				F46DD12824342EF700B1CE94 /* libs */,
-			);
-			path = js;
-			sourceTree = "<group>";
-		};
-		F46DD12424342EF700B1CE94 /* tools */ = {
-			isa = PBXGroup;
-			children = (
-				F46DD12524342EF700B1CE94 /* saveLocal.js */,
-				F46DD12624342EF700B1CE94 /* foodTool.js */,
-				F46DD12724342EF700B1CE94 /* oneMinute.js */,
-			);
-			path = tools;
-			sourceTree = "<group>";
-		};
-		F46DD12824342EF700B1CE94 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				F46DD12924342EF700B1CE94 /* ext-sdk.js */,
-				F46DD12A24342EF700B1CE94 /* underscore.js */,
-				F46DD12B24342EF700B1CE94 /* clndr.js */,
-				F46DD12C24342EF700B1CE94 /* jq2.js */,
-				F46DD12D24342EF700B1CE94 /* react.js */,
-				F46DD12E24342EF700B1CE94 /* task.js */,
-				F46DD12F24342EF700B1CE94 /* swipe.js */,
-				F46DD13024342EF700B1CE94 /* store.js */,
-				F46DD13124342EF700B1CE94 /* seajs.utils.js */,
-				F46DD13224342EF700B1CE94 /* dialog.js */,
-				F46DD13324342EF700B1CE94 /* library.js */,
-				F46DD13424342EF700B1CE94 /* loginApi.js */,
-				F46DD13524342EF700B1CE94 /* treeTable */,
-				F46DD13724342EF700B1CE94 /* nprogress.js */,
-				F46DD13824342EF700B1CE94 /* md5.js */,
-				F46DD13924342EF700B1CE94 /* lazyr.js */,
-				F46DD13A24342EF700B1CE94 /* jweixin-1.0.0.js */,
-				F46DD13B24342EF700B1CE94 /* form.js */,
-				F46DD13C24342EF700B1CE94 /* cookie.js */,
-				F46DD13D24342EF700B1CE94 /* idangerous.swiper.js */,
-				F46DD13E24342EF700B1CE94 /* template.js */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		F46DD13524342EF700B1CE94 /* treeTable */ = {
-			isa = PBXGroup;
-			children = (
-				F46DD13624342EF700B1CE94 /* jquery.treeTable.js */,
-			);
-			path = treeTable;
-			sourceTree = "<group>";
-		};
-		F46DD13F24342EF700B1CE94 /* img */ = {
-			isa = PBXGroup;
-			children = (
-				F46DD14024342EF700B1CE94 /* sprite */,
-			);
-			path = img;
-			sourceTree = "<group>";
-		};
-		F46DD14024342EF700B1CE94 /* sprite */ = {
-			isa = PBXGroup;
-			children = (
-				F46DD14124342EF700B1CE94 /* global_0.5_z.png */,
-			);
-			path = sprite;
 			sourceTree = "<group>";
 		};
 		F4C48EF32380D6DD007E7434 /* lib */ = {
@@ -1265,6 +1113,7 @@
 				7599FA3923890FEC00FD7C7C /* Model.scnassets in Resources */,
 				F4C2E103237FC7CC00D302E9 /* Table.plist in Resources */,
 				F4187531235DCEB400B6DB40 /* LaunchScreen.storyboard in Resources */,
+				F4375B1F243EC70C006EFE7B /* Tools in Resources */,
 				F418752E235DCEB400B6DB40 /* Assets.xcassets in Resources */,
 				F4236C6023672C86008D72D7 /* Self.plist in Resources */,
 				F4B7E8DE236AD4A600AC9054 /* Html.plist in Resources */,

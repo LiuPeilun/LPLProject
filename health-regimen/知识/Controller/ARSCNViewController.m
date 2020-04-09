@@ -20,7 +20,7 @@
 @property (nonatomic, strong) ARSession *arSession;
 //会话追踪配置：负责追踪相机的运动
 @property (nonatomic, strong) ARConfiguration *arConfiguration;
-//飞机3D模型
+//3D模型
 @property (nonatomic, strong) SCNNode *planeNode;
 
 //捏合手势开始时获取当前模型的scale

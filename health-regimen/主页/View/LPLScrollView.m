@@ -11,10 +11,10 @@
 
 @interface LPLScrollView()
 
-@property(nonatomic, weak) UIImageView *imageV;
-@property(nonatomic, strong) NSArray *array;
-@property(nonatomic, weak) UIImageView *imageVOne;
-@property(nonatomic, weak) UIImageView *imageVLast;
+@property(nonatomic, strong) UIImageView *imageV;
+@property(nonatomic, copy) NSArray *array;
+@property(nonatomic, strong) UIImageView *imageVOne;
+@property(nonatomic, strong) UIImageView *imageVLast;
 
 @end
 
@@ -77,8 +77,8 @@
     CGFloat x = 0;
     CGFloat y = 0;
     
-    LBItem *item = [[LBItem alloc] init];
-    item = [self.array lastObject];
+//    item *item = [[LBItem alloc] init];
+    LBItem *item = [self.array lastObject];
     
     self.imageVOne.frame = CGRectMake(0, 0, width, height);
     self.imageVOne.image = [UIImage imageNamed:item.imageName];
@@ -98,16 +98,17 @@
 //            NSLog(@"%lu---------imageView.tag", imageView.tag);
             
             imageView.frame = CGRectMake(x, y, width, height);
-            imageView.image = [UIImage imageNamed:item.imageName];
-            
+            NSString *imageName = item.imageName;
+            [imageView setImage:[UIImage imageNamed:imageName]];
+            //[UIImage imageNamed:item.imageName]
             if(imageView.tag + 1 == self.array.count){
                 
                 //模型获取数据
                 item = [self.array firstObject];
                 x = width * (self.array.count + 1);
                 //设置图片属性
-                self.imageVLast.frame = CGRectMake(x, y, width, height);
-                self.imageVLast.image = [UIImage imageNamed:item.imageName];
+                _imageVLast.frame = CGRectMake(x, y, width, height);
+                [_imageVLast setImage:[UIImage imageNamed:imageName]];
             }
         }
         

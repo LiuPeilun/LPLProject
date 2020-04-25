@@ -24,7 +24,7 @@
 
 @property(nonatomic, assign) CGFloat btnViewHeight;
 @property(nonatomic, strong) LPLBtnView *btnView;
-@property(nonatomic, strong) NSArray *tableArray;
+@property(nonatomic, copy) NSArray *tableArray;
 @property(nonatomic, strong) NSFileHandle *handle;
 @property(nonatomic, copy) NSString *fullPath;
 @property(nonatomic, strong) NSMutableArray *historyArr;

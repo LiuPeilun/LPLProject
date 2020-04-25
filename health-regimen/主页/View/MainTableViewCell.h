@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainTableViewCell : UITableViewCell
 
-@property(nonatomic, weak) UIImageView *imageV;
-@property(nonatomic, weak) UILabel *title;
-@property(nonatomic, weak) UILabel *label;
+@property(nonatomic, strong) UIImageView *imageV;
+@property(nonatomic, strong) UILabel *title;
+@property(nonatomic, strong) UILabel *label;
 
 @end
 

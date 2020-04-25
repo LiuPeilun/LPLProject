@@ -29,8 +29,8 @@
 @property(nonatomic, assign) int pageCount;
 //模型数组
 //@property(nonatomic, strong) TableItem *item;
-@property(nonatomic, strong) NSArray *array;
-@property(nonatomic, strong) NSArray *tableArray;
+@property(nonatomic, copy) NSArray *array;
+@property(nonatomic, copy) NSArray *tableArray;
 //浏览历史数组
 @property(nonatomic, strong) NSMutableArray *historyArray;
 //存储浏览历史文件的路径
@@ -199,54 +199,52 @@
 -(void)addTimer{
     //GCD计时器在GCD资源里面
 
-    self.timer =dispatch_source_create(&_dispatch_source_type_timer, 0, 0,dispatch_get_main_queue());
+    self.timer = dispatch_source_create(&_dispatch_source_type_timer, 0, 0,dispatch_get_main_queue());
 
 //    self.timer = timer;
     //调用GCD的set方式
 
     //参数：1，GCD计时器    2，延迟几秒后开始执行   3，计时器间隔    4，计时器精度
 
-    dispatch_source_set_timer(self.timer,DISPATCH_WALLTIME_NOW, 4.0*NSEC_PER_SEC, 0ull*NSEC_PER_SEC);
+    dispatch_source_set_timer(_timer,DISPATCH_WALLTIME_NOW, 4.0*NSEC_PER_SEC, 0ull*NSEC_PER_SEC);
 
     //handle方法(该方法在开启了计时器时调用)
 
-    dispatch_source_set_event_handler(self.timer, ^{
+    __weak typeof(self) weakSelf = self;
+    dispatch_source_set_event_handler(_timer, ^{
         
-        [self nextImage];
+        [weakSelf nextImage];
     });
 
     //开启计时器
 
-    dispatch_resume(self.timer);
+    dispatch_resume(_timer);
 }
 
 -(void)nextImage{
     
-    CGFloat currentX = self.scrollView.contentOffset.x;
+    CGFloat currentX = _scrollView.contentOffset.x;
     
     CGFloat nextX = currentX + self.view.frame.size.width;
     
     [UIView animateWithDuration:0.5 animations:^{
-        
+//        __weak typeof(self) weakSelf = self;
         self.scrollView.contentOffset = CGPointMake(nextX, 0);
-    } completion:^(BOOL finished) {
-        
-//        NSLog(@"%f-----------%f", self.scrollView.frame.size.width, self.scrollView.frame.size.height);
-//        NSLog(@"--------complete-------");
     }];
+     
     
     //当UIScrollView滑动到第一位(第一张图片也就是显示着最后一张图片的图片)停止时，将UIScrollView的偏移量改变
-    if(self.scrollView.contentOffset.x == 0){
+    if(_scrollView.contentOffset.x == 0){
 
         //改变到倒数第二张图片位置
-        self.scrollView.contentOffset = CGPointMake(self.array.count * self.view.frame.size.width, 0);
+        _scrollView.contentOffset = CGPointMake(self.array.count * self.view.frame.size.width, 0);
         self.pageControl.currentPage = self.array.count;
 
         //当图片移动到最后一位，显示的是第一张图片，改变偏移量
-    }else if (self.scrollView.contentOffset.x == (self.array.count + 1) * self.view.frame.size.width){
+    }else if (_scrollView.contentOffset.x == (self.array.count + 1) * self.view.frame.size.width){
 
         //改到第二位图片的位置
-        self.scrollView.contentOffset = CGPointMake(self.view.frame.size.width, 0);
+        _scrollView.contentOffset = CGPointMake(self.view.frame.size.width, 0);
         self.pageControl.currentPage = 0;
 
     }else{

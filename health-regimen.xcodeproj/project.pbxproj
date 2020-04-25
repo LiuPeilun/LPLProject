@@ -40,6 +40,7 @@
 		F4236C63236739B9008D72D7 /* SelfItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4236C62236739B9008D72D7 /* SelfItem.m */; };
 		F4236C6623673ADC008D72D7 /* SelfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4236C6523673ADC008D72D7 /* SelfTableViewCell.m */; };
 		F4375B1F243EC70C006EFE7B /* Tools in Resources */ = {isa = PBXBuildFile; fileRef = F4375B1E243EC70C006EFE7B /* Tools */; };
+		F45A3BB424543F4B00917740 /* AFHTTPSessionManagerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F45A3BB324543F4B00917740 /* AFHTTPSessionManagerTool.m */; };
 		F4B7E8DE236AD4A600AC9054 /* Html.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4B7E8DD236AD4A600AC9054 /* Html.plist */; };
 		F4B7E93C236AF04700AC9054 /* HtmlItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B7E93B236AF04700AC9054 /* HtmlItem.m */; };
 		F4C2E101237F8C9300D302E9 /* ToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2E100237F8C9300D302E9 /* ToolsViewController.m */; };
@@ -223,6 +224,8 @@
 		F4236C6423673ADC008D72D7 /* SelfTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfTableViewCell.h; sourceTree = "<group>"; };
 		F4236C6523673ADC008D72D7 /* SelfTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfTableViewCell.m; sourceTree = "<group>"; };
 		F4375B1E243EC70C006EFE7B /* Tools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Tools; path = "../../../大创/Tools"; sourceTree = "<group>"; };
+		F45A3BB224543F4B00917740 /* AFHTTPSessionManagerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManagerTool.h; sourceTree = "<group>"; };
+		F45A3BB324543F4B00917740 /* AFHTTPSessionManagerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManagerTool.m; sourceTree = "<group>"; };
 		F4B7E8DD236AD4A600AC9054 /* Html.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Html.plist; sourceTree = "<group>"; };
 		F4B7E93A236AF04700AC9054 /* HtmlItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HtmlItem.h; sourceTree = "<group>"; };
 		F4B7E93B236AF04700AC9054 /* HtmlItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HtmlItem.m; sourceTree = "<group>"; };
@@ -1047,6 +1050,8 @@
 				F4F040962392606F0059F8DA /* AFSecurityPolicy.m */,
 				F4F040972392606F0059F8DA /* AFCompatibilityMacros.h */,
 				F4F040982392606F0059F8DA /* AFHTTPSessionManager.h */,
+				F45A3BB224543F4B00917740 /* AFHTTPSessionManagerTool.h */,
+				F45A3BB324543F4B00917740 /* AFHTTPSessionManagerTool.m */,
 			);
 			path = AFNetworking;
 			sourceTree = "<group>";
@@ -1243,6 +1248,7 @@
 				F4E2FD462394E49800A9391E /* SDWebImageManager.m in Sources */,
 				F4FE85BE238FBD9200374AE4 /* HistoryTableViewController.m in Sources */,
 				F4E2FD5E2394E49800A9391E /* SDDiskCache.m in Sources */,
+				F45A3BB424543F4B00917740 /* AFHTTPSessionManagerTool.m in Sources */,
 				F4107D6B2365CB2D0088844E /* LPLBtnView.m in Sources */,
 				F4E2DAFD2393AECD007D423F /* MJRefreshBackNormalFooter.m in Sources */,
 				F4E2FD6E2394E49800A9391E /* UIImage+MemoryCacheCost.m in Sources */,
@@ -1413,6 +1419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3792VPBNV9;
 				INFOPLIST_FILE = "health-regimen/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1430,6 +1437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3792VPBNV9;
 				INFOPLIST_FILE = "health-regimen/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

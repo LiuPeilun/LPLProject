@@ -14,6 +14,7 @@
 #import "LPLRefreshControl.h"
 #import "MJRefresh.h"
 #import "JsonUrlItem.h"
+#import "AFHTTPSessionManagerTool.h"
 
 @interface VideoTableViewController ()<UIScrollViewDelegate>
 //自定义cell
@@ -25,7 +26,7 @@
 //视频播放器数据
 @property (nonatomic, strong) AVPlayerItem *item;
 //数组
-@property(nonatomic, strong) NSArray *array;
+@property(nonatomic, copy) NSArray *array;
 //接收视频json数据数组
 @property(nonatomic, strong) NSMutableArray *videoArr;
 //视频数据数组转模型
@@ -225,7 +226,8 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     //创建会话管理者
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManagerTool shareManager];
+    
     
     //无条件的信任服务器上的证书
     AFSecurityPolicy *securityPolicy =  [AFSecurityPolicy defaultPolicy];
@@ -523,7 +525,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     if(self.videoArray == nil){
         return 10;
     }else{
@@ -589,7 +591,7 @@
                     
                         
                     //创建队列
-                    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+//                    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
                         
                     self.queue.maxConcurrentOperationCount = 5;
                         
@@ -642,9 +644,9 @@
                     self.operationDict[[self.imageUrlArray[indexPath.row] absoluteString]] = operation;
                     
                     //将任务添加到队列，开始下载任务
-                    [queue addOperation:operation];
+                    [self.queue addOperation:operation];
                     
-                    self.queue = queue;
+//                    self.queue = queue;
                     
 //                    NSLog(@"%@", [NSThread currentThread]);
                                     

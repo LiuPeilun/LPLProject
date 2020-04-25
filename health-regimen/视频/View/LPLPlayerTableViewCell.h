@@ -28,13 +28,13 @@ typedef void (^CellBlock)(LPLPlayerTableViewCell *cell, UIButton *button);
 //@property (nonatomic, strong) AVPlayerLayer *playerLayer;
 @property(nonatomic, strong) AVPlayerViewController * __nullable playerVC;
 
-@property(nonatomic, weak) UILabel *label;
-@property(nonatomic, weak) UIView *view;
-@property(nonatomic, weak) UIButton *button;
+@property(nonatomic, strong) UILabel *label;
+@property(nonatomic, strong) UIView *view;
+@property(nonatomic, strong) UIButton *button;
 @property(nonatomic, strong) VideoItem *item;
-@property(nonatomic, weak) UIImageView *loadImageView;
-@property (nonatomic, weak) UILabel *labelBottom;
-@property (nonatomic, weak) UILabel *labelTime;
+@property(nonatomic, strong) UIImageView *loadImageView;
+@property (nonatomic, strong) UILabel *labelBottom;
+@property (nonatomic, strong) UILabel *labelTime;
 
 @end
 

@@ -12,11 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LPLMainTableViewCell : UITableViewCell
 
-@property(nonatomic, weak) UILabel *title;
-@property(nonatomic, weak) UIImageView *imageV1;
-@property(nonatomic, weak) UIImageView *imageV2;
-@property(nonatomic, weak) UIImageView *imageV3;
-@property(nonatomic, weak) UILabel *label;
+@property(nonatomic, strong) UILabel *title;
+@property(nonatomic, strong) UIImageView *imageV1;
+@property(nonatomic, strong) UIImageView *imageV2;
+@property(nonatomic, strong) UIImageView *imageV3;
+@property(nonatomic, strong) UILabel *label;
 
 @end
 

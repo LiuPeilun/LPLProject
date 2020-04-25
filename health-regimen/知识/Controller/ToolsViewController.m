@@ -13,7 +13,7 @@
 @interface ToolsViewController ()<BoxViewControllerDelegate>
 
 @property(nonatomic, strong)WKWebView *webView;
-@property(nonatomic, strong) NSArray *array;
+@property(nonatomic, copy) NSArray *array;
 
 @end
 

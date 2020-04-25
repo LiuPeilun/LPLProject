@@ -14,7 +14,7 @@
 
 @interface HistoryTableViewController ()
 
-@property(nonatomic, strong) NSArray *array;
+@property(nonatomic, copy) NSArray *array;
 
 @end
 

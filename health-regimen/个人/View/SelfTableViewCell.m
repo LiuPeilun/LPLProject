@@ -12,10 +12,10 @@
 
 @interface SelfTableViewCell()
 
-@property(nonatomic, strong) NSArray *array;
-@property(nonatomic, weak) UILabel *label;
-@property(nonatomic, weak) UISwitch *swt;
-@property(nonatomic, weak) UISlider *slider;
+@property(nonatomic, copy) NSArray *array;
+@property(nonatomic, strong) UILabel *label;
+@property(nonatomic, strong) UISwitch *swt;
+@property(nonatomic, strong) UISlider *slider;
 @property(nonatomic, assign) NSInteger index;
 
 @property (nonatomic, copy) NSString *fileSize;

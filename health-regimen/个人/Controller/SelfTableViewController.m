@@ -19,7 +19,7 @@
 
 @interface SelfTableViewController ()<SelfTableViewCellDelegate, UITabBarControllerDelegate>
 
-@property(nonatomic, strong) NSArray *array;
+@property(nonatomic, copy) NSArray *array;
 @property(nonatomic, assign) NSInteger sectionNum;
 @property(nonatomic, assign) NSInteger rowNum;
 @property(nonatomic, assign) NSInteger tag;

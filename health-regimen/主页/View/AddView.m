@@ -12,7 +12,7 @@
 
 @interface AddView()
 
-@property(nonatomic, strong) NSArray *array;
+@property(nonatomic, copy) NSArray *array;
 @property(nonatomic, strong) UIButton *button;
 @property(nonatomic, strong) NSMutableArray *btnSelectedArr;
 

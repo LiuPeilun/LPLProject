@@ -157,7 +157,7 @@
     
     return _pageControl;
 }
-
+ 
 - (UIScrollView *)scrollView{
     
     if(!_scrollView){

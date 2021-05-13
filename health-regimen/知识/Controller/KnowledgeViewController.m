@@ -12,7 +12,6 @@
 #import "BoxViewController.h"
 #import "UIColor+LPLColor.h"
 #import "KonwTableItem.h"
-#import "KonwTableItem.h"
 #import "KnowWebViewController.h"
 #import "MassageWebViewController.h"
 #import "FoodWebViewController.h"
@@ -74,11 +73,42 @@
             NSLog(@"打开数据库失败");
         }
         
+//        @property(nonatomic, copy) NSString *title;
+//        @property(nonatomic, copy) NSString *text;
+//        @property(nonatomic, strong) NSString *icon1;
+//        @property(nonatomic, strong) NSString *icon2;
+//        @property(nonatomic, strong) NSString *icon3;
+//        @property(nonatomic, copy) NSString *url;
+        
+        NSMutableDictionary *Mdic2 = [NSMutableDictionary dictionary];
+        NSMutableArray *Marr2 = [NSMutableArray array];
+        
         FMResultSet *rs = [db executeQuery:@"SELECT * FROM KnowledgePage"];
         //遍历查询
         while([rs next]){
             
+            NSString *title = [rs stringForColumn:@"title"];
+            NSString *text = [rs stringForColumn:@"text"];
+            NSString *icon1 = [rs stringForColumn:@"icon1"];
+            NSString *icon2 = [rs stringForColumn:@"icon2"];
+            NSString *icon3 = [rs stringForColumn:@"icon3"];
+            NSString *url = [rs stringForColumn:@"url"];
+            
+            [Mdic2 setValue:title forKey:@"title"];
+            [Mdic2 setValue:text forKey:@"text"];
+            [Mdic2 setValue:icon1 forKey:@"icon1"];
+            [Mdic2 setValue:icon2 forKey:@"icon2"];
+            [Mdic2 setValue:icon3 forKey:@"icon3"];
+            [Mdic2 setValue:url forKey:@"url"];
+            
+            KonwTableItem *item2 = [KonwTableItem knowTableDataWithDict:Mdic2];
+            
+            [Marr2 addObject:item2];
         }
+        _tableArray = Marr2;
+        
+//----------------------------------------------------------------------------
+/*
         //读取plist文件数据
         NSArray *arr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"KnowTable" ofType:@"plist"]];
         
@@ -94,6 +124,8 @@
             [Marr addObject:item];
         }
         _tableArray = Marr;
+*/
+//----------------------------------------------------------------------------
         
     }
     return _tableArray;

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <SMS_SDK/SMSSDK.h>
 
 @interface AppDelegate ()
 
@@ -15,7 +16,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+        
 //    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 //    self.window.backgroundColor = [UIColor purpleColor];
 //
@@ -24,6 +25,8 @@
 //    
 //    self.window.rootViewController = navVC;
 //    [self.window makeKeyAndVisible];
+    
+    
     //修改tabbar默认的蓝色渲染
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:8/255.0 green:163/255.0 blue:27/255.0 alpha:1]];
     

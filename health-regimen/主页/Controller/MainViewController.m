@@ -17,9 +17,11 @@
 #import "TableItem.h"
 #import "MainWebViewController.h"
 #import "SelfTableViewController.h"
+#import "FMDB.h"
 
 @interface MainViewController ()<UIScrollViewDelegate, UITabBarControllerDelegate, SelfTableViewControllerDelegate>
-
+// 数据库对象
+@property (nonatomic, strong) FMDatabase *fmDatabase;
 //headView高度
 @property(nonatomic, assign)CGFloat headViewHeight;
 //页数控制器
@@ -37,7 +39,6 @@
 @property(nonatomic, copy) NSString *fullPath;
 //文件句柄
 @property(nonatomic, strong) NSFileHandle *handle;
-
 //计时器
 @property(nonatomic, strong) dispatch_source_t timer;
 //手指之前位置
@@ -75,6 +76,46 @@
 
 - (NSArray *)tableArray{
     if(!_tableArray){
+        
+//---------------------------------------------------------------------------------------
+        //数据库文件路径
+        NSString *DataBasePath = @"/Users/home/Desktop/大学/iOS/健康养生APP/health-regimen/health.sqlite";
+        NSLog(@"%@", DataBasePath);
+        //创建数据库对象
+        FMDatabase *db = [FMDatabase databaseWithPath:DataBasePath];
+        _fmDatabase = db;
+        
+        // 打开数据库，true，打开成功；false，打开失败
+        BOOL isSuccess = [db open];
+        // 判断是否打开成功
+        if (isSuccess) {
+            NSLog(@"打开数据库成功");
+            NSLog(@"数据库路径：%@", DataBasePath);
+        } else {
+            NSLog(@"打开数据库失败");
+        }
+        
+        FMResultSet *rs = [db executeQuery:@"SELECT * FROM MainPage"];
+        NSMutableDictionary *Mdic = [NSMutableDictionary dictionary];
+        NSMutableArray *Marr2 = [NSMutableArray array];
+        //遍历查询
+        while([rs next]){
+            NSString *icon = [rs stringForColumn:@"icon"];
+            NSString *text = [rs stringForColumn:@"text"];
+            NSString *title = [rs stringForColumn:@"title"];
+            NSString *url = [rs stringForColumn:@"url"];
+            
+            [Mdic setValue:icon forKey:@"icon"];
+            [Mdic setValue:text forKey:@"text"];
+            [Mdic setValue:title forKey:@"title"];
+            [Mdic setValue:url forKey:@"url"];
+            
+            TableItem *item2 = [TableItem tableDataWithDict:Mdic];
+            [Marr2 addObject:item2];
+        }
+        _tableArray = Marr2;
+//---------------------------------------------------------------------------------------
+/*
         //读取plist文件数据
         NSArray *arr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Table" ofType:@"plist"]];
         
@@ -85,13 +126,14 @@
             //转为模型
             TableItem *item = [TableItem tableDataWithDict:dic];
             
-//            NSLog(@"%@", item.url);
+            NSLog(@"%@", item.url);
             
             [Marr addObject:item];
         }
         _tableArray = Marr;
-        
+ */
     }
+ 
     return _tableArray;
 }
 

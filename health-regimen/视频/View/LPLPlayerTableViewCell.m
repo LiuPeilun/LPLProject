@@ -20,34 +20,27 @@
         
         UIView *view = [[UIView alloc] init];
         [self.contentView addSubview:view];
-        
         self.view = view;
         
         UIImageView *imageView = [[UIImageView alloc] init];
         [self.contentView addSubview:imageView];
-
         self.loadImageView = imageView;
         
         UILabel *label = [[UILabel alloc] init];
         [self.contentView addSubview:label];
-        
         self.label = label;
         
         UILabel *label1 = [[UILabel alloc] init];
         [self.contentView addSubview:label1];
-        
         self.labelBottom = label1;
         
         UILabel *label2 = [[UILabel alloc] init];
         [self.contentView addSubview:label2];
-        
         self.labelTime = label2;
         
         UIButton *btn = [[UIButton alloc] init];
         [self.contentView addSubview:btn];
-        
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        
         self.button = btn;
         
 //        AVPlayerViewController *playerVC = [[AVPlayerViewController alloc] init];

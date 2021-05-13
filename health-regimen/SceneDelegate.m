@@ -2,6 +2,7 @@
 #import "LPLTabBarController.h"
 #import "LPLNavigationController.h"
 #import "UIColor+LPLColor.h"
+#import "LoginViewController.h"
 
 @interface SceneDelegate ()
 
@@ -21,11 +22,13 @@
     self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
     self.window.backgroundColor = [UIColor tableViewBackColor];
     
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    
     //创建tabBar
-    LPLTabBarController *tabBarVC = [[LPLTabBarController alloc] init];
+//    LPLTabBarController *tabBarVC = [[LPLTabBarController alloc] init];
     
     //设置窗口根控制器
-    [self.window setRootViewController:tabBarVC];
+    [self.window setRootViewController:loginVC];
 //    self.window.rootViewController.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
     //让窗口显示
     [self.window makeKeyAndVisible];

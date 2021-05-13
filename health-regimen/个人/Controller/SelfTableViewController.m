@@ -15,7 +15,8 @@
 #import "HistoryTableViewController.h"
 #import "MainViewController.h"
 #import "KnowledgeViewController.h"
-
+#import "LoginViewController.h"
+#import "FMDB.h"
 
 @interface SelfTableViewController ()<SelfTableViewCellDelegate, UITabBarControllerDelegate>
 
@@ -28,13 +29,58 @@
 @property(nonatomic, strong) UIColor *labelColor;
 @property(nonatomic, strong) UIColor *tableViewBackColor;
 @property(nonatomic, strong) UIColor *tableViewHeadColor;
-
+// 数据库对象
+@property (nonatomic, strong) FMDatabase *fmDatabase;
 @end
 
 @implementation SelfTableViewController
 
 - (NSArray *)array{
     if(!_array){
+        
+        //数据库文件路径
+        NSString *DataBasePath = @"/Users/home/Desktop/大学/iOS/健康养生APP/health-regimen/health.sqlite";
+        NSLog(@"%@", DataBasePath);
+        //创建数据库对象
+        FMDatabase *db = [FMDatabase databaseWithPath:DataBasePath];
+        _fmDatabase = db;
+        
+        // 打开数据库，true，打开成功；false，打开失败
+        BOOL isSuccess = [db open];
+        // 判断是否打开成功
+        if (isSuccess) {
+            NSLog(@"打开数据库成功");
+            NSLog(@"数据库路径：%@", DataBasePath);
+        } else {
+            NSLog(@"打开数据库失败");
+        }
+        
+        FMResultSet *rs = [db executeQuery:@"SELECT * FROM PersonalPage"];
+        
+        NSMutableDictionary *Mdic2 = [NSMutableDictionary dictionary];
+        NSMutableArray *Marr2 = [NSMutableArray array];
+        
+        //遍历查询
+        while([rs next]){
+            NSString *group = [rs stringForColumn:@"group"];
+            NSString *type = [rs stringForColumn:@"type"];
+            NSString *title = [rs stringForColumn:@"title"];
+            NSString *imageName = [rs stringForColumn:@"imageName"];
+            
+            [Mdic2 setValue:group forKey:@"group"];
+            [Mdic2 setValue:type forKey:@"type"];
+            [Mdic2 setValue:title forKey:@"title"];
+            [Mdic2 setValue:imageName forKey:@"imageName"];
+            
+            SelfItem *item2 = [SelfItem itemWithDict:Mdic2];
+            
+            [Marr2 addObject:item2];
+        }
+        _array = Marr2;
+        self.tag = 0;
+        
+//------------------------------------------------------------------------------------
+/*
         NSArray *arr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Self" ofType:@"plist"]];
                         
         NSMutableArray *array = [NSMutableArray array];
@@ -45,6 +91,8 @@
         }
         _array = array;
         self.tag = 0;
+ */
+//------------------------------------------------------------------------------------
     }
                         
     return _array;
@@ -165,6 +213,9 @@
     }else if(indexPath.row == 1 && indexPath.section == 0){
         HistoryTableViewController *historyVC = [[HistoryTableViewController alloc] init];
         [self.navigationController pushViewController:historyVC animated:YES];
+    }else if(indexPath.row == 1 && indexPath.section == 2){
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        [self.navigationController pushViewController:loginVC animated:YES];
     }
 }
 

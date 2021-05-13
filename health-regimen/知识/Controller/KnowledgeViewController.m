@@ -18,7 +18,7 @@
 #import "FoodWebViewController.h"
 #import "ARSCNViewController.h"
 #import "SelfTableViewController.h"
-
+#import "FMDB.h"
 
 @interface KnowledgeViewController ()<UINavigationControllerDelegate,LPLBtnViewDelegate,UIScrollViewDelegate,UIImagePickerControllerDelegate, ARSCNViewControllerDelegate, UITabBarControllerDelegate, SelfTableViewControllerDelegate>
 
@@ -29,7 +29,8 @@
 @property(nonatomic, copy) NSString *fullPath;
 @property(nonatomic, strong) NSMutableArray *historyArr;
 @property(nonatomic, assign) NSInteger selectedIndex;
-
+// 数据库对象
+@property (nonatomic, strong) FMDatabase *fmDatabase;
 @end
 
 @implementation KnowledgeViewController
@@ -55,6 +56,29 @@
 
 - (NSArray *)tableArray{
     if(!_tableArray){
+        
+        //数据库文件路径
+        NSString *DataBasePath = @"/Users/home/Desktop/大学/iOS/健康养生APP/health-regimen/health.sqlite";
+        NSLog(@"%@", DataBasePath);
+        //创建数据库对象
+        FMDatabase *db = [FMDatabase databaseWithPath:DataBasePath];
+        _fmDatabase = db;
+        
+        // 打开数据库，true，打开成功；false，打开失败
+        BOOL isSuccess = [db open];
+        // 判断是否打开成功
+        if (isSuccess) {
+            NSLog(@"打开数据库成功");
+            NSLog(@"数据库路径：%@", DataBasePath);
+        } else {
+            NSLog(@"打开数据库失败");
+        }
+        
+        FMResultSet *rs = [db executeQuery:@"SELECT * FROM KnowledgePage"];
+        //遍历查询
+        while([rs next]){
+            
+        }
         //读取plist文件数据
         NSArray *arr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"KnowTable" ofType:@"plist"]];
         

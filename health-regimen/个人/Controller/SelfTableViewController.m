@@ -29,6 +29,9 @@
 @property(nonatomic, strong) UIColor *labelColor;
 @property(nonatomic, strong) UIColor *tableViewBackColor;
 @property(nonatomic, strong) UIColor *tableViewHeadColor;
+
+@property(nonatomic, strong) LoginViewController *loginVC;
+
 // 数据库对象
 @property (nonatomic, strong) FMDatabase *fmDatabase;
 @end
@@ -39,10 +42,11 @@
     if(!_array){
         
         //数据库文件路径
-        NSString *DataBasePath = @"/Users/home/Desktop/大学/iOS/健康养生APP/health-regimen/health.sqlite";
-        NSLog(@"%@", DataBasePath);
+        NSString *dataBasePath = [[NSBundle mainBundle] pathForResource:@"health" ofType:@"sqlite"];
+
+        NSLog(@"%@", dataBasePath);
         //创建数据库对象
-        FMDatabase *db = [FMDatabase databaseWithPath:DataBasePath];
+        FMDatabase *db = [FMDatabase databaseWithPath:dataBasePath];
         _fmDatabase = db;
         
         // 打开数据库，true，打开成功；false，打开失败
@@ -50,7 +54,7 @@
         // 判断是否打开成功
         if (isSuccess) {
             NSLog(@"打开数据库成功");
-            NSLog(@"数据库路径：%@", DataBasePath);
+            NSLog(@"数据库路径：%@", dataBasePath);
         } else {
             NSLog(@"打开数据库失败");
         }
@@ -214,14 +218,33 @@
         HistoryTableViewController *historyVC = [[HistoryTableViewController alloc] init];
         [self.navigationController pushViewController:historyVC animated:YES];
     }else if(indexPath.row == 1 && indexPath.section == 2){
+
         LoginViewController *loginVC = [[LoginViewController alloc] init];
-        [self.navigationController pushViewController:loginVC animated:YES];
+        self.loginVC = loginVC;
+        loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
+        
+        UISwipeGestureRecognizer *swipeGes = [[UISwipeGestureRecognizer alloc] init];
+        [swipeGes setDirection:UISwipeGestureRecognizerDirectionDown];
+        [swipeGes addTarget:self action:@selector(dismissLoginVC:)];
+        loginVC.loginView.userInteractionEnabled = YES;
+        loginVC.view.userInteractionEnabled = YES;
+        [loginVC.loginView addGestureRecognizer:swipeGes];
+        
+        [self presentViewController:loginVC animated:YES completion:nil];
     }
+}
+
+- (void)dismissLoginVC:(UISwipeGestureRecognizer *)swipeGes {
+    
+    if (swipeGes.direction == UISwipeGestureRecognizerDirectionDown) {
+        [self dismissViewControllerAnimated:self.loginVC completion:nil];
+    }
+    
 }
 
 #pragma mark - UITabBarControllerDelegate
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
-
+    
 }
 
 #pragma mark - SelfTableViewCellDelegate

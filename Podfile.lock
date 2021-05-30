@@ -1,0 +1,26 @@
+PODS:
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - mob_smssdk (3.3.1):
+    - MOBFoundation
+  - MOBFoundation (3.2.25)
+
+DEPENDENCIES:
+  - FMDB
+  - mob_smssdk
+
+SPEC REPOS:
+  trunk:
+    - FMDB
+    - mob_smssdk
+    - MOBFoundation
+
+SPEC CHECKSUMS:
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  mob_smssdk: 5a4ea1a132ba9c883af1a469c49d2ceede592fef
+  MOBFoundation: eaeb2e9e26a4155fa931020fb275d83445da0e09
+
+PODFILE CHECKSUM: 110a441982608f483f2c97229f9665207560d099
+
+COCOAPODS: 1.9.1

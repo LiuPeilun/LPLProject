@@ -57,10 +57,11 @@
     if(!_tableArray){
         
         //数据库文件路径
-        NSString *DataBasePath = @"/Users/home/Desktop/大学/iOS/健康养生APP/health-regimen/health.sqlite";
-        NSLog(@"%@", DataBasePath);
+//        NSString *DataBasePath = @"/Users/home/Desktop/大学/iOS/健康养生APP/health-regimen/health.sqlite";
+        NSString *dataBasePath = [[NSBundle mainBundle] pathForResource:@"health" ofType:@"sqlite"];
+        NSLog(@"%@", dataBasePath);
         //创建数据库对象
-        FMDatabase *db = [FMDatabase databaseWithPath:DataBasePath];
+        FMDatabase *db = [FMDatabase databaseWithPath:dataBasePath];
         _fmDatabase = db;
         
         // 打开数据库，true，打开成功；false，打开失败
@@ -68,7 +69,7 @@
         // 判断是否打开成功
         if (isSuccess) {
             NSLog(@"打开数据库成功");
-            NSLog(@"数据库路径：%@", DataBasePath);
+            NSLog(@"数据库路径：%@", dataBasePath);
         } else {
             NSLog(@"打开数据库失败");
         }

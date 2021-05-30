@@ -11,6 +11,8 @@
 #import "MainViewController.h"
 #import <SMS_SDK/SMSSDK.h>
 #import <MOBFoundation/MobSDK+Privacy.h>
+#import "LoginView.h"
+#import "MBProgressHUD+XMG.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
@@ -22,90 +24,56 @@
 
 @implementation LoginViewController
 
-//手机号输入框
-- (IBAction)phoneNumber:(UITextField *)sender {
-    
-    
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-//验证码输入框
-- (IBAction)code:(UITextField *)sender {
-    
-    
+- (LoginView *)loginView {
+    if (_loginView == nil) {
+        _loginView = [[LoginView alloc] init];
+        _loginView.frame = self.view.bounds;
+    }
+    return _loginView;
 }
 
-//获取验证码按钮
-- (IBAction)codeClick:(UIButton *)sender {
+/// 登录按钮
+- (void)loginAction {
     
-    NSLog(@"11--------------");
-    //获取验证码
-    /*
-     SMSGetCodeMethodSMS为短信验证码
-     SMSGetCodeMethodVoice为语音验证码
-     zone :地区号，填86即可
-     */
-    NSLog(@"self.phoneNumberTextFiled.text :%@", self.phoneNumberTextFiled.text);
-    NSLog(@"self.number :%@", self.number);
-    
-    [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:self.phoneNumberTextFiled.text zone:@"86" template:nil result:^(NSError *error) {
+    [SMSSDK commitVerificationCode:self.loginView.pwdTextField.text phoneNumber:self.loginView.accountTextField.text zone:@"86" result:^(NSError *error) {
         
         if(error){
-            NSLog(@"手机号输入有误");
+            
+            [self identifyError];
+            
+        } else {
+            
+            LPLTabBarController *tabBarVC = [[LPLTabBarController alloc] init];
+            UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+            if (window) {
+                window.rootViewController = tabBarVC;
+                [window makeKeyAndVisible];
+            }
+            
+            self.loginView.count = 60;
         }
     }];
-}
-
-//登陆按钮
-- (IBAction)loginClick:(UIButton *)sender {
-    
-    LPLTabBarController *tabBarVC = [[LPLTabBarController alloc] init];
-    //    MainViewController *mainVC = [[MainViewController alloc] init];
-        
-        //满屏弹出
-        tabBarVC.modalPresentationStyle = 0;
-        [self presentViewController:tabBarVC animated:NO completion:nil];
-    
-//    [SMSSDK commitVerificationCode:self.codeTextField.text phoneNumber:self.phoneNumberTextFiled.text zone:@"86" result:^(NSError *error) {
-//        if(error){
-//            NSLog(@"验证码输入错误");
-//        }else{
-//            
-//            LPLTabBarController *tabBarVC = [[LPLTabBarController alloc] init];
-//            //    MainViewController *mainVC = [[MainViewController alloc] init];
-//                
-//                //满屏弹出
-//                tabBarVC.modalPresentationStyle = 0;
-//                [self presentViewController:tabBarVC animated:NO completion:nil];
-//        }
-//    }];
-    
     
 }
-
-
-//-(void)textFiledDidChange:(UITextField*) sender{
-//
-//    self.number = sender.text;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self.view addSubview:self.loginView];
 
     [MobSDK uploadPrivacyPermissionStatus:YES onResult:^(BOOL success) {
     }];
     
-    NSLog(@"aaaaaa");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginAction) name:@"loginBtnClick" object:nil];
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)identifyError {
+    [MBProgressHUD showError:@"验证码输入有误，请重新输入!"];
 }
-*/
 
 @end
